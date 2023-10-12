@@ -14,8 +14,9 @@ public abstract class AbstractVec3f implements Vec3f {
         if (this == o) return true;
         if (!(o instanceof Vec3f)) return false;
         Vec3f other = (Vec3f) o;
-        return Double.compare(this.x(), other.x()) == 0 &&
-                Double.compare(this.y(), other.y()) == 0;
+        return Float.compare(this.x(), other.x()) == 0 &&
+                Float.compare(this.y(), other.y()) == 0 &&
+                Float.compare(this.z(), other.z()) == 0;
     }
 
     @Override

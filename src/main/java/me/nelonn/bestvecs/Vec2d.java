@@ -34,27 +34,25 @@ public interface Vec2d {
         return this.multiply(value, value);
     }
 
-    /**
-     * Returns the current vector if it is ImmVec2d, or returns a new one with the same coordinates
-     * @return current or new ImmVec2d
-     */
-    default @NotNull ImmVec2d immutable() {
-        return this instanceof ImmVec2d ? (ImmVec2d) this : immutable(x(), y());
+    default double length() {
+        double x = this.x();
+        double y = this.y();
+        return Math.sqrt(x * x + y * y);
     }
 
     /**
-     * Returns the current vector if it is MutVec2d, or returns a new one with the same coordinates
-     * @return current or new MutVec2d
+     * Returns the current vector if it is immutable, or returns a new immutable with the same coordinates
+     * @return current or new immutable vector
      */
-    default @NotNull MutVec2d mutable() {
-        return this instanceof MutVec2d ? (MutVec2d) this : copy();
+    default @NotNull ImmVec2d toImmutable() {
+        return this instanceof ImmVec2d ? (ImmVec2d) this : immutable(this.x(), this.y());
     }
 
     /**
-     * Guaranteed to return a new MutVec3d
-     * @return new MutVec3d
+     * Guaranteed to return a new mutable vector
+     * @return new mutable vector
      */
-    default @NotNull MutVec2d copy() {
+    default @NotNull MutVec2d mutableCopy() {
         return mutable(this.x(), this.y());
     }
 

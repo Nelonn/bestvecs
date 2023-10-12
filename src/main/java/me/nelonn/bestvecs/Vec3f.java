@@ -36,27 +36,26 @@ public interface Vec3f {
         return this.multiply(value, value, value);
     }
 
-    /**
-     * Returns the current vector if it is ImmVec3f, or returns a new one with the same coordinates
-     * @return current or new ImmVec3f
-     */
-    default @NotNull ImmVec3f immutable() {
-        return this instanceof ImmVec3f ? (ImmVec3f) this : immutable(x(), y(), z());
+    default float length() {
+        float x = this.x();
+        float y = this.y();
+        float z = this.z();
+        return (float) Math.sqrt(x * x + y * y + z * z);
     }
 
     /**
-     * Returns the current vector if it is MutVec3f, or returns a new one with the same coordinates
-     * @return current or new MutVec3f
+     * Returns the current vector if it is immutable, or returns a new immutable with the same coordinates
+     * @return current or new immutable vector
      */
-    default @NotNull MutVec3f mutable() {
-        return this instanceof MutVec3f ? (MutVec3f) this : copy();
+    default @NotNull ImmVec3f toImmutable() {
+        return this instanceof ImmVec3f ? (ImmVec3f) this : immutable(this.x(), this.y(), this.z());
     }
 
     /**
-     * Guaranteed to return a new MutVec3f
-     * @return new MutVec3f
+     * Guaranteed to return a new mutable vector
+     * @return new mutable vector
      */
-    default @NotNull MutVec3f copy() {
+    default @NotNull MutVec3f mutableCopy() {
         return mutable(this.x(), this.y(), this.z());
     }
 
