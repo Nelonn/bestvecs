@@ -36,6 +36,10 @@ public interface Vec3f {
         return this.multiply(value, value, value);
     }
 
+    default @NotNull Vec3f lerp(@NotNull Vec3f to, float delta) {
+        return this.with(lerp(delta, this.x(), to.x()), lerp(delta, this.y(), to.y()), lerp(delta, this.z(), to.z()));
+    }
+
     default float length() {
         float x = this.x();
         float y = this.y();
@@ -66,5 +70,9 @@ public interface Vec3f {
     static @NotNull MutVec3f mutable(float x, float y, float z) {
         return new MutVec3f(x, y, z);
     }
-    
+
+    private static float lerp(float delta, float start, float end) {
+        return start + delta * (end - start);
+    }
+
 }

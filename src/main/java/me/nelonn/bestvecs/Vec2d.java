@@ -34,6 +34,10 @@ public interface Vec2d {
         return this.multiply(value, value);
     }
 
+    default @NotNull Vec2d lerp(@NotNull Vec2d to, double delta) {
+        return this.with(lerp(delta, this.x(), to.x()), lerp(delta, this.y(), to.y()));
+    }
+
     default double length() {
         double x = this.x();
         double y = this.y();
@@ -62,6 +66,10 @@ public interface Vec2d {
 
     static @NotNull MutVec2d mutable(double x, double y) {
         return new MutVec2d(x, y);
+    }
+
+    private static double lerp(double delta, double start, double end) {
+        return start + delta * (end - start);
     }
 
 }

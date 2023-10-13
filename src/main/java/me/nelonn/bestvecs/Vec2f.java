@@ -34,6 +34,10 @@ public interface Vec2f {
         return this.multiply(value, value);
     }
 
+    default @NotNull Vec2f lerp(@NotNull Vec2f to, float delta) {
+        return this.with(lerp(delta, this.x(), to.x()), lerp(delta, this.y(), to.y()));
+    }
+
     default float length() {
         float x = this.x();
         float y = this.y();
@@ -62,6 +66,10 @@ public interface Vec2f {
 
     static @NotNull MutVec2f mutable(float x, float y) {
         return new MutVec2f(x, y);
+    }
+
+    private static float lerp(float delta, float start, float end) {
+        return start + delta * (end - start);
     }
 
 }

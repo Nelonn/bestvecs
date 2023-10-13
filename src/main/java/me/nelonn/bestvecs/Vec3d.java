@@ -36,6 +36,10 @@ public interface Vec3d {
         return this.multiply(value, value, value);
     }
 
+    default @NotNull Vec3d lerp(@NotNull Vec3d to, double delta) {
+        return this.with(lerp(delta, this.x(), to.x()), lerp(delta, this.y(), to.y()), lerp(delta, this.z(), to.z()));
+    }
+
     default double length() {
         double x = this.x();
         double y = this.y();
@@ -65,6 +69,10 @@ public interface Vec3d {
 
     static @NotNull MutVec3d mutable(double x, double y, double z) {
         return new MutVec3d(x, y, z);
+    }
+
+    private static double lerp(double delta, double start, double end) {
+        return start + delta * (end - start);
     }
 
 }
