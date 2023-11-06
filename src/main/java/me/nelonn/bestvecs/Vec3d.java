@@ -12,6 +12,10 @@ public interface Vec3d {
 
     @NotNull Vec3d with(double x, double y, double z);
 
+    default @NotNull Vec3d set(@NotNull Vec3d value) {
+        return this.with(value.x(), value.y(), value.z());
+    }
+
     default @NotNull Vec3d add(double x, double y, double z) {
         return this.with(this.x() + x, this.y() + y, this.z() + z);
     }

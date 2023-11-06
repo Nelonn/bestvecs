@@ -10,6 +10,10 @@ public interface Vec2d {
 
     @NotNull Vec2d with(double x, double y);
 
+    default @NotNull Vec2d set(@NotNull Vec2d value) {
+        return this.with(value.x(), value.y());
+    }
+
     default @NotNull Vec2d add(double x, double y) {
         return this.with(this.x() + x, this.y() + y);
     }

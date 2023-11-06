@@ -1,9 +1,6 @@
 plugins {
-    id("java")
+    `java-library`
 }
-
-group = "me.nelonn"
-version = "0.0.3"
 
 repositories {
     mavenCentral()

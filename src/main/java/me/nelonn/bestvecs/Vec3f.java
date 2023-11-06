@@ -12,6 +12,10 @@ public interface Vec3f {
 
     @NotNull Vec3f with(float x, float y, float z);
 
+    default @NotNull Vec3f set(@NotNull Vec3f value) {
+        return this.with(value.x(), value.y(), value.z());
+    }
+
     default @NotNull Vec3f add(float x, float y, float z) {
         return this.with(this.x() + x, this.y() + y, this.z() + z);
     }
