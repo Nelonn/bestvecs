@@ -4,11 +4,11 @@ This library implements both mutable and immutable vectors
 
 ```java
 ImmVec3d foo = Vec3d.immutable(1, 2, 3);
-ImmVec3d bar = foo.multiply(2);
+Vec3d bar = foo.multiply(2);
 // foo != bar
 
-MutVec3d qux = bar.mutable();
-MutVec3d quux = bar.mutable();
+MutVec3d qux = bar.mutableCopy();
+MutVec3d quux = bar.mutableCopy();
 // bar != qux
 // bar != quux
 // qux != quux
