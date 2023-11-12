@@ -12,7 +12,7 @@ public interface Vec3d {
 
     @NotNull Vec3d with(double x, double y, double z);
 
-    default @NotNull Vec3d set(@NotNull Vec3d value) {
+    default @NotNull Vec3d with(@NotNull Vec3d value) {
         return this.with(value.x(), value.y(), value.z());
     }
 
@@ -40,7 +40,7 @@ public interface Vec3d {
         return this.multiply(value, value, value);
     }
 
-    default @NotNull Vec3d lerp(@NotNull Vec3d to, double delta) {
+    default @NotNull Vec3d lerp(@NotNull Vec3d to, float delta) {
         return this.with(lerp(delta, this.x(), to.x()), lerp(delta, this.y(), to.y()), lerp(delta, this.z(), to.z()));
     }
 
@@ -75,7 +75,7 @@ public interface Vec3d {
         return new MutVec3d(x, y, z);
     }
 
-    private static double lerp(double delta, double start, double end) {
+    private static double lerp(float delta, double start, double end) {
         return start + delta * (end - start);
     }
 

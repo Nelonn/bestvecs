@@ -10,7 +10,7 @@ public interface Vec2f {
 
     @NotNull Vec2f with(float x, float y);
 
-    default @NotNull Vec2f set(@NotNull Vec2f value) {
+    default @NotNull Vec2f with(@NotNull Vec2f value) {
         return this.with(value.x(), value.y());
     }
 

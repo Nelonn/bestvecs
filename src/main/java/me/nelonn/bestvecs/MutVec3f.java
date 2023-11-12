@@ -49,6 +49,11 @@ public class MutVec3f extends AbstractVec3f {
     }
 
     @Override
+    public @NotNull MutVec3f with(@NotNull Vec3f value) {
+        return (MutVec3f) super.with(value);
+    }
+
+    @Override
     public @NotNull MutVec3f add(float x, float y, float z) {
         return (MutVec3f) super.add(x, y, z);
     }
@@ -76,5 +81,10 @@ public class MutVec3f extends AbstractVec3f {
     @Override
     public @NotNull MutVec3f multiply(float value) {
         return (MutVec3f) super.multiply(value);
+    }
+
+    @Override
+    public @NotNull MutVec3f lerp(@NotNull Vec3f to, float delta) {
+        return (MutVec3f) super.lerp(to, delta);
     }
 }

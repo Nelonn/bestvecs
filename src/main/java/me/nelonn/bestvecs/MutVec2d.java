@@ -37,6 +37,11 @@ public class MutVec2d extends AbstractVec2d {
     }
 
     @Override
+    public @NotNull MutVec2d with(@NotNull Vec2d value) {
+        return (MutVec2d) super.with(value);
+    }
+
+    @Override
     public @NotNull MutVec2d add(double x, double y) {
         return (MutVec2d) super.add(x, y);
     }
@@ -64,5 +69,10 @@ public class MutVec2d extends AbstractVec2d {
     @Override
     public @NotNull MutVec2d multiply(double value) {
         return (MutVec2d) super.multiply(value);
+    }
+
+    @Override
+    public @NotNull MutVec2d lerp(@NotNull Vec2d to, float delta) {
+        return (MutVec2d) super.lerp(to, delta);
     }
 }

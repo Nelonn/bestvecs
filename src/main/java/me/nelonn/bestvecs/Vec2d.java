@@ -10,7 +10,7 @@ public interface Vec2d {
 
     @NotNull Vec2d with(double x, double y);
 
-    default @NotNull Vec2d set(@NotNull Vec2d value) {
+    default @NotNull Vec2d with(@NotNull Vec2d value) {
         return this.with(value.x(), value.y());
     }
 
@@ -38,7 +38,7 @@ public interface Vec2d {
         return this.multiply(value, value);
     }
 
-    default @NotNull Vec2d lerp(@NotNull Vec2d to, double delta) {
+    default @NotNull Vec2d lerp(@NotNull Vec2d to, float delta) {
         return this.with(lerp(delta, this.x(), to.x()), lerp(delta, this.y(), to.y()));
     }
 
@@ -72,7 +72,7 @@ public interface Vec2d {
         return new MutVec2d(x, y);
     }
 
-    private static double lerp(double delta, double start, double end) {
+    private static double lerp(float delta, double start, double end) {
         return start + delta * (end - start);
     }
 
