@@ -87,4 +87,9 @@ public class MutVec3d extends AbstractVec3d {
     public @NotNull MutVec3d lerp(@NotNull Vec3d to, float delta) {
         return (MutVec3d) super.lerp(to, delta);
     }
+
+    @Override
+    public @NotNull MutVec3d normalize() {
+        return (MutVec3d) super.normalize();
+    }
 }

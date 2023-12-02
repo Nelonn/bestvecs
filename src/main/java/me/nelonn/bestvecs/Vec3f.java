@@ -44,6 +44,11 @@ public interface Vec3f {
         return this.with(lerp(delta, this.x(), to.x()), lerp(delta, this.y(), to.y()), lerp(delta, this.z(), to.z()));
     }
 
+    default @NotNull Vec3f normalize() {
+        float invLength = 1.0F / this.length();
+        return this.with(this.x() * invLength, this.y() * invLength, this.z() * invLength);
+    }
+
     default float length() {
         float x = this.x();
         float y = this.y();

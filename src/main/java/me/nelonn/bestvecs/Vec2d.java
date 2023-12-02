@@ -42,6 +42,11 @@ public interface Vec2d {
         return this.with(lerp(delta, this.x(), to.x()), lerp(delta, this.y(), to.y()));
     }
 
+    default @NotNull Vec2d normalize() {
+        double invLength = 1.0D / this.length();
+        return this.with(this.x() * invLength, this.y() * invLength);
+    }
+
     default double length() {
         double x = this.x();
         double y = this.y();
